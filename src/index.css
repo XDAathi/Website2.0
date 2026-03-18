@@ -1,0 +1,44 @@
+@import 'tailwindcss';
+
+@theme {
+  --color-bg: #151518;
+  --color-title: #d7ebe9;
+  --color-subtitle: #b2c2c1;
+  --font-inter: 'Inter', system-ui, -apple-system, sans-serif;
+}
+
+html {
+  font-family: var(--font-inter);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+  scroll-behavior: smooth;
+  scroll-padding-top: 28px;
+  background-color: var(--color-bg);
+  background-image:
+    radial-gradient(circle at 12% 18%, rgba(104, 86, 202, 0.24), transparent 28%),
+    radial-gradient(circle at 82% 26%, rgba(232, 132, 194, 0.22), transparent 24%),
+    radial-gradient(circle at 68% 78%, rgba(130, 112, 255, 0.14), transparent 20%);
+  color: var(--color-subtitle);
+}
+
+body {
+  min-height: 100vh;
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.02), transparent 18%),
+    var(--color-bg);
+}
+
+#root {
+  width: 100%;
+  min-height: 100vh;
+}
+
+.glass-ui-card-content {
+  overflow: hidden !important;
+  scrollbar-width: none;
+}
+
+.glass-ui-card-content::-webkit-scrollbar {
+  display: none;
+}
