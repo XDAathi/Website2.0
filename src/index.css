@@ -42,3 +42,173 @@ body {
 .glass-ui-card-content::-webkit-scrollbar {
   display: none;
 }
+
+.pokemon-card {
+  position: relative;
+  width: min(100%, 300px);
+  aspect-ratio: 63 / 88;
+  transform-style: preserve-3d;
+  border-radius: 22px;
+  overflow: hidden;
+  cursor: pointer;
+  isolation: isolate;
+  background:
+    radial-gradient(circle at top, rgba(255, 255, 255, 0.18), transparent 42%),
+    linear-gradient(145deg, rgba(255, 255, 255, 0.12), rgba(255, 255, 255, 0.03));
+  box-shadow:
+    0 36px 80px rgba(0, 0, 0, 0.45),
+    0 0 0 1px rgba(255, 255, 255, 0.14),
+    inset 0 1px 0 rgba(255, 255, 255, 0.32);
+  transform:
+    rotateX(var(--card-rotate-x))
+      rotateY(var(--card-rotate-y))
+    translateZ(0);
+  transition:
+    transform 90ms linear,
+    box-shadow 160ms ease;
+}
+
+.pokemon-card::before,
+.pokemon-card::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 3;
+}
+
+.pokemon-card::before {
+  background:
+    radial-gradient(
+      circle at var(--pointer-x) var(--pointer-y),
+      rgba(255, 255, 255, calc(var(--glare-opacity) + 0.18)) 0%,
+      rgba(255, 255, 255, calc(var(--glare-opacity) * 0.55)) 10%,
+      rgba(255, 255, 255, 0) 34%
+    );
+  mix-blend-mode: screen;
+}
+
+.pokemon-card::after {
+  inset: 1px;
+  border-radius: 21px;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  opacity: 0.75;
+}
+
+.pokemon-card__image,
+.pokemon-card__shine,
+.pokemon-card__holo {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: inherit;
+}
+
+.pokemon-card__image {
+  display: block;
+  object-fit: cover;
+  object-position: center;
+  user-select: none;
+  -webkit-user-drag: none;
+}
+
+.pokemon-card__shine {
+  z-index: 1;
+  background:
+    radial-gradient(
+      circle at var(--pointer-x) var(--pointer-y),
+      rgba(255, 255, 255, calc(var(--glare-opacity) + 0.08)) 0%,
+      rgba(255, 255, 255, calc(var(--glare-opacity) * 0.55)) 12%,
+      rgba(255, 255, 255, 0) 36%
+    ),
+    linear-gradient(
+      135deg,
+      rgba(255, 255, 255, 0.1),
+      rgba(255, 255, 255, 0) 28%,
+      rgba(255, 255, 255, 0.12) 55%,
+      rgba(255, 255, 255, 0) 74%
+    );
+  mix-blend-mode: screen;
+}
+
+.pokemon-card__holo {
+  z-index: 2;
+  opacity: var(--sparkle-opacity);
+  background-image:
+    linear-gradient(
+      115deg,
+      rgba(255, 0, 132, 0.36),
+      rgba(0, 199, 255, 0.28) 22%,
+      rgba(0, 255, 163, 0.3) 41%,
+      rgba(255, 245, 72, 0.34) 58%,
+      rgba(255, 121, 0, 0.3) 74%,
+      rgba(255, 0, 132, 0.36)
+    ),
+    radial-gradient(
+      circle at var(--background-x) var(--background-y),
+      rgba(255, 255, 255, 0.34),
+      rgba(255, 255, 255, 0.12) 18%,
+      rgba(255, 255, 255, 0) 45%
+    ),
+    repeating-linear-gradient(
+      135deg,
+      rgba(255, 255, 255, 0.18) 0,
+      rgba(255, 255, 255, 0.18) 2px,
+      rgba(255, 255, 255, 0) 4px,
+      rgba(255, 255, 255, 0) 9px
+    );
+  background-position:
+    var(--background-x) var(--background-y),
+    center,
+    center;
+  background-size:
+    170% 170%,
+    100% 100%,
+    180% 180%;
+  filter: saturate(1.35) contrast(1.1);
+  mix-blend-mode: color-dodge;
+}
+
+.cool-panel {
+  position: relative;
+  width: min(100%, 300px);
+  aspect-ratio: 63 / 88;
+  border-radius: 22px;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  box-shadow:
+    0 28px 60px rgba(0, 0, 0, 0.24),
+    inset 0 1px 0 rgba(255, 255, 255, 0.09);
+  isolation: isolate;
+}
+
+.cool-tag {
+  width: 100%;
+  text-align: center;
+}
+
+.cool-panel__image,
+.cool-panel__overlay {
+  position: absolute;
+  inset: 0;
+}
+
+.cool-panel__image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+.cool-panel__overlay {
+  background:
+    linear-gradient(180deg, rgba(8, 10, 20, 0.1), rgba(8, 10, 20, 0.04) 30%, rgba(8, 10, 20, 0.24));
+  z-index: 0;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .pokemon-card {
+    transition: none;
+  }
+}

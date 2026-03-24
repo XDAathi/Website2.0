@@ -1,11 +1,11 @@
 export default function About() {
   return (
     <section id="about" className="flex flex-col md:flex-row items-start justify-center gap-12 px-6 py-24 md:px-16 max-w-[1200px] mx-auto min-h-screen">
-      <div className="flex-shrink-0 w-full md:w-1/3 flex justify-center pt-8">
+      <div className="flex-shrink-0 w-full md:w-1/3 flex justify-center pt-2 md:-mt-10">
         <img
           src="/aathi.png"
           alt="Aathi portrait"
-          className="h-[500px] w-[370px] object-cover"
+          className="h-[560px] w-[410px] object-cover md:h-[620px] md:w-[460px]"
           draggable="false"
         />
       </div>
@@ -30,7 +30,7 @@ export default function About() {
           </p>
 
           <p>
-            When I'm not doing that, you'll probably find me watching anime, building LEGO speed champion sets, or queuing ranked on val.
+            When I'm not doing that, you'll probably find me watching anime, building LEGO, or queuing ranked on val.
           </p>
 
           <p>

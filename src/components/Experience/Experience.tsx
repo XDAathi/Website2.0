@@ -1,5 +1,3 @@
-import GlassSurface from '@/components/GlassSurface'
-
 type ExperienceItem = {
   title: string
   season: string
@@ -16,7 +14,7 @@ const EXPERIENCE_ITEMS: ExperienceItem[] = [
     season: 'Summer 2026 - Fall 2026',
     description: [
       'Joining Personal Banking',
-      'Next Best Action Delivery Management'
+      'Next Best Action Delivery Management',
     ],
     badge: {
       src: '/rbc.jpg',
@@ -27,8 +25,8 @@ const EXPERIENCE_ITEMS: ExperienceItem[] = [
     title: 'Data Analytics & AI Intern',
     season: 'Winter 2026',
     description: [
-      "Built Python automation pipelines integrating member-mapping APIs with website and CRM systems to streamline data workflows.",
-      'Implementing AI Solutions into everyday tasks.',
+      'Built Python automation pipelines integrating member-mapping APIs with website and CRM systems to streamline data workflows.',
+      'Implementing AI solutions into everyday tasks.',
     ],
     badge: {
       src: '/ocni3.png',
@@ -40,7 +38,7 @@ const EXPERIENCE_ITEMS: ExperienceItem[] = [
     season: 'Summer 2025 - 2026',
     description: [
       'Marketing lead @Google Developer Student Group at UTSC.',
-      'Co-Led a 12-person team, filming reels and running marketing promotions to hype up club events!',
+      'Co-led a 12-person team, filming reels and running marketing promotions to hype up club events.',
     ],
     badge: {
       src: '/gdg.png',
@@ -60,47 +58,32 @@ function Badge({ src, alt }: ExperienceItem['badge']) {
   )
 }
 
-function ExperienceCard({ title, season, description, badge }: ExperienceItem) {
+function ExperienceRow({ item }: { item: ExperienceItem }) {
   return (
-    <div className="relative mx-auto w-[348px] pt-8 md:mx-0 md:w-[360px]">
-      <div className="absolute right-[-10px] top-0 z-10 h-[88px] w-[88px] overflow-hidden rounded-full border border-white/16 bg-white/7 shadow-[0_10px_30px_rgba(0,0,0,0.22)] backdrop-blur-xl">
-        <Badge {...badge} />
-      </div>
-
-      <GlassSurface
-        width={360}
-        height={330}
-        borderRadius={44}
-        backgroundOpacity={0.2}
-        saturation={1.02}
-        borderWidth={0.045}
-        brightness={28}
-        opacity={0.6}
-        blur={5}
-        displace={0.2}
-        distortionScale={-72}
-        redOffset={0}
-        greenOffset={4}
-        blueOffset={8}
-        className="border border-white/13"
-      >
-        <div className="flex h-[330px] flex-col px-8 pb-10 pt-8 text-left">
-          <h3 className="max-w-[230px] text-[28px] font-bold leading-[0.95] text-title">
-            {title}
-          </h3>
-
-          <p className="mt-2 text-[17px] font-semibold text-subtitle/72">
-            {season}
-          </p>
-
-          <div className="mt-8 space-y-1.5 text-[16px] font-semibold leading-[1.55] text-subtitle">
-            {description.map((line) => (
-              <p key={line}>{line}</p>
-            ))}
+    <article className="border-t border-white/10 first:border-t-0">
+      <div className="grid gap-5 py-7 md:grid-cols-[88px_minmax(0,250px)_1fr] md:items-center md:gap-10 md:py-8">
+        <div className="flex justify-start md:items-center">
+          <div className="h-[72px] w-[72px] overflow-hidden rounded-full border border-white/16 bg-white/7 shadow-[0_10px_30px_rgba(0,0,0,0.22)]">
+            <Badge {...item.badge} />
           </div>
         </div>
-      </GlassSurface>
-    </div>
+
+        <div className="md:self-center">
+          <h3 className="text-[22px] font-bold leading-[0.95] text-title md:text-[26px]">
+            {item.title}
+          </h3>
+          <p className="mt-2 text-[15px] font-semibold uppercase tracking-[0.14em] text-subtitle/62">
+            {item.season}
+          </p>
+        </div>
+
+        <div className="space-y-2 text-[15px] font-medium leading-[1.7] text-subtitle md:self-center md:text-[16px]">
+          {item.description.map((line) => (
+            <p key={line}>{line}</p>
+          ))}
+        </div>
+      </div>
+    </article>
   )
 }
 
@@ -114,9 +97,9 @@ export default function Experience() {
         Experience
       </h2>
 
-      <div className="mt-10 grid gap-10 md:mt-12 md:grid-cols-3 md:gap-14">
+      <div className="mt-10 pl-3 md:mt-12 md:pl-6">
         {EXPERIENCE_ITEMS.map((item) => (
-          <ExperienceCard key={item.title} {...item} />
+          <ExperienceRow key={item.title} item={item} />
         ))}
       </div>
     </section>
