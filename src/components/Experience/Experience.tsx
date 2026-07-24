@@ -12,11 +12,15 @@ type ExperienceItem = {
 
 const EXPERIENCE_ITEMS: ExperienceItem[] = [
   {
-    title: 'Data Analyst Intern',
+    title: 'Data Engineering Intern',
     season: 'Summer 2026 - Fall 2026',
     description: [
-      'Joining Personal Banking',
-      'Next Best Action Delivery Management'
+      'I am part of the AI and Innovation team under Solution Acceleration & Innovation.',
+      'Some technologies I work with include MCP, Elastic Logging Stack, SpringBoot, Java , Python, iOS(CoreAI), SQL, OCP, Azure, Jenkins.',
+      'Built & deploying MCP server for internal DB querying.',
+      'Logging Solution using ElasticSearch for ML/AI logs moving away from Logging as a Service.',
+      'Worked on batch job\s for populating SQL tables from interal API\'s using Java & Springboot.',
+      'Proof of Concept, Agent to Agent(A2A) iOS app communication for RBC Launch App.'
     ],
     badge: {
       src: '/rbc.jpg',
@@ -24,7 +28,7 @@ const EXPERIENCE_ITEMS: ExperienceItem[] = [
     },
   },
   {
-    title: 'Data Analytics & AI Intern',
+    title: 'Data & AI Intern',
     season: 'Winter 2026',
     description: [
       "Built Python automation pipelines integrating member-mapping APIs with website and CRM systems to streamline data workflows.",
@@ -69,7 +73,7 @@ function ExperienceCard({ title, season, description, badge }: ExperienceItem) {
 
       <GlassSurface
         width={360}
-        height={330}
+        height="auto"
         borderRadius={44}
         backgroundOpacity={0.2}
         saturation={1.02}
@@ -84,7 +88,7 @@ function ExperienceCard({ title, season, description, badge }: ExperienceItem) {
         blueOffset={8}
         className="border border-white/13"
       >
-        <div className="flex h-[330px] flex-col px-8 pb-10 pt-8 text-left">
+        <div className="flex flex-col px-8 pb-10 pt-8 text-left">
           <h3 className="max-w-[230px] text-[28px] font-bold leading-[0.95] text-title">
             {title}
           </h3>

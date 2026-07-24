@@ -61,6 +61,9 @@ const GlassSurface: React.FC<GlassSurfaceProps> = ({
   className = '',
   style = {},
 }) => {
+  const isAutoHeight =
+    height === 'auto' || height === 'fit-content' || height === 'max-content'
+
   const wrapperStyle: React.CSSProperties = {
     ...style,
     width: typeof width === 'number' ? `${width}px` : width,
@@ -79,8 +82,8 @@ const GlassSurface: React.FC<GlassSurfaceProps> = ({
       <GlassCard
         width={numericWidth}
         height={numericHeight}
-        className={`h-full w-full overflow-hidden ${className}`}
-        contentClassName="h-full w-full overflow-hidden"
+        className={`${isAutoHeight ? 'w-full' : 'h-full w-full'} overflow-hidden ${className}`}
+        contentClassName={`${isAutoHeight ? 'w-full' : 'h-full w-full'} overflow-hidden`}
         borderRadius={borderRadius}
         borderSize={Math.max(1, borderWidth)}
         borderColor="#ffffff"

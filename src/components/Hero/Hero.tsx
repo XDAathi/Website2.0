@@ -27,7 +27,7 @@ export default function Hero() {
           Heyo, I'm Aathi
         </h1>
         <p className="text-[16px] font-normal leading-[1.4] text-subtitle md:text-[24px]">
-          2nd year Stats and Econ @ University of Toronto
+          Studying Statistics and Economics @ University of Toronto
         </p>
 
         <div className="mt-8 flex w-full items-center gap-6">
